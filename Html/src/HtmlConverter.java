@@ -27,18 +27,19 @@ public class HtmlConverter {
         while (fileScanner.hasNextLine()) {
             String temp = fileScanner.nextLine();
             for (int i = 0; i < regex.length; ++i) {
-                if(temp.isBlank()) {
+                if (temp.isBlank()) {
                     fileWriter.write((isUlOn ? "</ul>\n" : "") + "<p>\n");
-                    if(isUlOn)  isUlOn = false;
+                    if (isUlOn)
+                        isUlOn = false;
                     break;
                 }
 
                 Matcher matcher = Pattern.compile(regex[i]).matcher(temp);
                 if (matcher.find()) {
-                    if(regex[i] == LIST && !isUlOn) {
+                    if (regex[i] == LIST && !isUlOn) {
                         fileWriter.write("<ul>\n");
                         isUlOn = true;
-                    } else if(regex[i] != LIST && isUlOn) {
+                    } else if (regex[i] != LIST && isUlOn) {
                         fileWriter.write("</ul>\n");
                         isUlOn = false;
                     }
@@ -54,8 +55,17 @@ public class HtmlConverter {
     }
 
     public static String getFileName() {
-        System.out.print("Enter the file name: ");
-        return new Scanner(System.in).nextLine();
+        String fileName = "";
+        Scanner sc = new Scanner(System.in);
+        int index;
+
+        do {
+            System.out.print("Enter the file name ending in '.txt': ");
+            fileName = sc.nextLine();
+            index = fileName.lastIndexOf('.');
+        } while (index == -1 || !fileName.substring(index).equals(".txt"));
+
+        return fileName;
     }
 
     public static String getHTMLFileName(String txtFile) {
@@ -63,10 +73,14 @@ public class HtmlConverter {
     }
 
     public static String convertToHTML(String regex, Matcher matcher) {
-        if (regex == HEADER) return "<h1>" + matcher.group(1) + "</h1>";
-        if (regex == LIST) return "<li>" + matcher.group(1) + "</li>";
-        if (regex == URL) return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", matcher.group(1), matcher.group(2));
-        if (regex == PARAGRAPH) return matcher.group(1) + "</br>";
+        if (regex == HEADER)
+            return "<h1>" + matcher.group(1) + "</h1>";
+        if (regex == LIST)
+            return "<li>" + matcher.group(1) + "</li>";
+        if (regex == URL)
+            return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", matcher.group(1), matcher.group(2));
+        if (regex == PARAGRAPH)
+            return matcher.group(1) + "</br>";
         return matcher.group();
     }
 }
