@@ -7,9 +7,12 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class HtmlConverter {
+    final static String TITLE = "\\$([\\w\\W]+)\\$";
     final static String HEADER = "#([\\w\\W]+)#";
     final static String LIST = "-\\s([\\w\\W]+)";
     final static String URL = "\\[\\[([https?|www]\\S+)\\]\\[(\\w+)\\]\\]";
+    final static String BOLD = "\\*\\*(\\w+)\\*\\*";
+    final static String ITALICS = "\\*(\\w+)\\*";
     final static String PARAGRAPH = "([\\w\\W]+)";
 
     public static void main(String[] args) throws IOException, FileNotFoundException {
@@ -22,7 +25,7 @@ public class HtmlConverter {
 
         boolean isUlOn = false;
 
-        String regex[] = { HEADER, LIST, URL, PARAGRAPH };
+        String regex[] = { TITLE, HEADER, LIST, URL, BOLD, ITALICS, PARAGRAPH };
 
         while (fileScanner.hasNextLine()) {
             String temp = fileScanner.nextLine();
@@ -61,7 +64,7 @@ public class HtmlConverter {
 
         do {
             System.out.print("Enter the file name ending in '.txt': ");
-            fileName = sc.nextLine();
+            fileName = sc.nextLine().trim();
             index = fileName.lastIndexOf('.');
         } while (index == -1 || !fileName.substring(index).equals(".txt"));
 
@@ -73,14 +76,31 @@ public class HtmlConverter {
     }
 
     public static String convertToHTML(String regex, Matcher matcher) {
-        if (regex == HEADER)
-            return "<h1>" + matcher.group(1) + "</h1>";
-        if (regex == LIST)
-            return "<li>" + matcher.group(1) + "</li>";
-        if (regex == URL)
-            return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", matcher.group(1), matcher.group(2));
-        if (regex == PARAGRAPH)
-            return matcher.group(1) + "</br>";
-        return matcher.group();
+        switch (regex) {
+            case TITLE:
+                return "<title>" + matcher.group(1) + "</title>";
+
+            case HEADER:
+                return "<h1>" + matcher.group(1) + "</h1>";
+
+            case LIST:
+                return "<li>" + matcher.group(1) + "</li>";
+
+            case URL:
+                return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", matcher.group(1), matcher.group(2));
+
+            case ITALICS:
+                return "<i>" + matcher.group(1) + "</i>";
+
+            case BOLD:
+                return "<b>" + matcher.group(1) + "</b>";
+
+            case PARAGRAPH:
+                return matcher.group(1) + "</br>";
+
+            default:
+                return matcher.group();
+        }
+
     }
 }
