@@ -11,8 +11,8 @@ public class HtmlConverter {
     final static String HEADER = "#([\\w\\W]+)#";
     final static String LIST = "-\\s([\\w\\W]+)";
     final static String URL = "\\[\\[([https?|www]\\S+)\\]\\[(\\w+)\\]\\]";
-    final static String BOLD = "\\*\\*(\\w+)\\*\\*";
-    final static String ITALICS = "\\*(\\w+)\\*";
+    final static String BOLD = "^\\*{2}([\\w\\W]+)\\*{2}$";
+    final static String ITALICS = "^\\*([\\w\\W]+)\\*$";
     final static String PARAGRAPH = "([\\w\\W]+)";
 
     public static void main(String[] args) throws IOException, FileNotFoundException {
