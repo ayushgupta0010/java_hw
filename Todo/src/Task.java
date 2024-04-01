@@ -3,9 +3,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class Task {
-    String name;
-    int priority, estMinsToComplete;
-    LocalDateTime whenDue;
+    private String name;
+    private int priority, estMinsToComplete;
+    private LocalDateTime whenDue;
 
     public Task(String name, int priority, int estMinsToComplete, LocalDateTime whenDue) {
         this.name = name;
