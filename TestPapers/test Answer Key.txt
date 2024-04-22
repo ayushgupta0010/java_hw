@@ -1,0 +1,30 @@
+
+********** Test **********		Total Points: 4
+
+1. _____ was the 16th US President.		1 points
+Your answer: __________
+
+Correct Ans: Abraham Lincoln
+
+2. Who lives in a pineapple under the sea?		2 points
+Your answer: __________
+
+Possible Answers: 
+1. Peter Griffin
+2. Scooby Doo
+3. Spongebob squarepants
+4. Eric Cartman
+
+Correct Ans: 3
+
+3. Where was the Rocky movie filmed?		1 points
+Your answer: __________
+
+Possible Answers: 
+1. New York
+2. Philadelphia
+3. California
+4. Chicago
+
+Correct Ans: 2
+
