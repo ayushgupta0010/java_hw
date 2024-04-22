@@ -19,8 +19,7 @@ class Test {
     public String toString() {
         String temp = "";
         for(int i = 0; i < questions.size(); ++i) {
-            Question q = questions.get(i);
-            temp += String.format("%d. ", i + 1) + q + '\n';
+            temp += String.format("%d. ", i + 1) + questions.get(i) + '\n';
         }
         return temp;
     }
@@ -28,8 +27,7 @@ class Test {
     public String toAnswerString() {
         String temp = "";
         for(int i = 0; i < questions.size(); ++i) {
-            Question q = questions.get(i);
-            temp += String.format("%d. ", i + 1) + q.toAnswerString() + '\n';
+            temp += String.format("%d. ", i + 1) + questions.get(i).toAnswerString() + '\n';
         }
         return temp;
     }

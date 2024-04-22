@@ -57,7 +57,7 @@ class TestBank {
     }
 
     public static void printTest(Test test) {
-        System.out.printf("\n********** Test **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
+        System.out.printf(getHeader(test, false));
         System.out.println(test);
     }
 
