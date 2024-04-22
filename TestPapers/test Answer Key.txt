@@ -1,12 +1,16 @@
+********** Test With Answer Key **********		Total Points: 5
 
-********** Test **********		Total Points: 4
-
-1. _____ was the 16th US President.		1 points
+1. What is the smallest prime number?		2 points
 Your answer: __________
 
-Correct Ans: Abraham Lincoln
+Correct Answer: 2
 
-2. Who lives in a pineapple under the sea?		2 points
+2. Which is 4th planet in the solar system?		1 points
+Your answer: __________
+
+Correct Answer: Mars
+
+3. Who lives in a pineapple under the sea?		2 points
 Your answer: __________
 
 Possible Answers: 
@@ -15,16 +19,5 @@ Possible Answers:
 3. Spongebob squarepants
 4. Eric Cartman
 
-Correct Ans: 3
-
-3. Where was the Rocky movie filmed?		1 points
-Your answer: __________
-
-Possible Answers: 
-1. New York
-2. Philadelphia
-3. California
-4. Chicago
-
-Correct Ans: 2
+Correct Answer: 3
 

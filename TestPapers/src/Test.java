@@ -16,11 +16,20 @@ class Test {
         return totalPoints;
     }
 
-    public String toString(boolean withAns) {
+    public String toString() {
         String temp = "";
         for(int i = 0; i < questions.size(); ++i) {
             Question q = questions.get(i);
-            temp += String.format("%d. ", i + 1) + q + (withAns ? String.format("\nCorrect Ans: %s\n", q.getCorrectAns()) : "") +  "\n";
+            temp += String.format("%d. ", i + 1) + q + '\n';
+        }
+        return temp;
+    }
+
+    public String toAnswerString() {
+        String temp = "";
+        for(int i = 0; i < questions.size(); ++i) {
+            Question q = questions.get(i);
+            temp += String.format("%d. ", i + 1) + q.toAnswerString() + '\n';
         }
         return temp;
     }

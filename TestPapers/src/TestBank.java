@@ -19,12 +19,10 @@ class TestBank {
     public static void main(String args[]) throws IOException {
         ArrayList<Question> questions = new ArrayList<Question>();
 
-        pickOqQuestions(questions);
-        pickFibQuestions(questions);
-        pickMcQuestions(questions);
+        Test test = createTest(questions);
 
-        Test test = new Test(questions);
         printTest(test);
+        printTestAnswer(test);
         sendToFile(test);
     }
 
@@ -34,7 +32,6 @@ class TestBank {
         System.out.print("Enter the name of the file: ");
         String testFileName = sc.next();
         String ansKeyFileName = testFileName + " Answer Key.txt";
-        String header = String.format("********** Test **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
 
         File testFile = new File(testFileName + ".txt");
         File ansKeyFile = new File(ansKeyFileName);
@@ -42,19 +39,31 @@ class TestBank {
         FileWriter testFw = new FileWriter(testFile);
         FileWriter ansKeyFw = new FileWriter(ansKeyFile);
 
-        testFw.write(header);
-        ansKeyFw.write(header);
+        testFw.write(getHeader(test, false));
+        ansKeyFw.write(getHeader(test, true));
 
-        testFw.write(test.toString(false));
-        ansKeyFw.write(test.toString(true));
+        testFw.write(test.toString());
+        ansKeyFw.write(test.toAnswerString());
 
         testFw.close();
         ansKeyFw.close();
     }
 
+    public static Test createTest(ArrayList<Question> questions) {
+        pickOqQuestions(questions);
+        pickFibQuestions(questions);
+        pickMcQuestions(questions);
+        return new Test(questions);
+    }
+
     public static void printTest(Test test) {
         System.out.printf("\n********** Test **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
-        System.out.println(test.toString(false));
+        System.out.println(test);
+    }
+
+    public static void printTestAnswer(Test test) {
+        System.out.printf(getHeader(test, true));
+        System.out.println(test.toAnswerString());
     }
 
     public static void pickOqQuestions(ArrayList<Question> questions) {
@@ -76,6 +85,11 @@ class TestBank {
         for(int i = 0; i < noQuesToPick; ++i) {
             questions.add(new MultipleChoiceQuestion(getRand(4) + 1, getRand(100) + 1, 1, mcList[i], mcListAns[i], mcPossibleAnsList[i]));
         }
+    }
+
+    public static String getHeader(Test test, boolean isAns) {
+        if(isAns) return String.format("********** Test With Answer Key **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
+        return String.format("********** Test **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
     }
 
     public static int getRand(int max) {

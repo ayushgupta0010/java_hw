@@ -40,17 +40,37 @@ class Question {
         }
         return temp;
     }
+
+    public String toAnswerString(){
+        return "";
+    }
 }
 
 class ObjectiveQuestion extends Question {
     public ObjectiveQuestion(int p, int d, int a, String q, String c) {
         super(p, d, a, q, c);
     }
+
+    public String toString() {
+        return super.toString();
+    }
+
+    public String toAnswerString() {
+        return this.toString() + "\nCorrect Answer: " + super.getCorrectAns() + '\n';
+    }
 }
 
 class FillInTheBlankQuestion extends Question {
     public FillInTheBlankQuestion(int p, int d, int a, String q, String c) {
         super(p, d, a, q, c);
+    }
+
+    public String toString() {
+        return super.toString();
+    }
+
+    public String toAnswerString() {
+        return this.toString() + "\nCorrect Answer: " + super.getCorrectAns() + '\n';
     }
 }
 
@@ -70,5 +90,9 @@ class MultipleChoiceQuestion extends Question {
         String temp = super.toString();
         temp += "\nPossible Answers: \n" + possibleAnswers;
         return temp;
+    }
+
+    public String toAnswerString() {
+        return this.toString() + "\nCorrect Answer: " + super.getCorrectAns() + '\n';
     }
 }
