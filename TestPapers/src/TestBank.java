@@ -34,7 +34,7 @@ class TestBank {
         System.out.print("Enter the name of the file: ");
         String testFileName = sc.next();
         String ansKeyFileName = testFileName + " Answer Key.txt";
-        String header = String.format("\n********** Test **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
+        String header = String.format("********** Test **********\t\tTotal Points: %d\n\n", test.getTotalPoints());
 
         File testFile = new File(testFileName + ".txt");
         File ansKeyFile = new File(ansKeyFileName);

@@ -8,7 +8,7 @@ class Test {
         questions = q;
 
         for(Question _q : questions) {
-            if(_q != null) totalPoints += _q.getPoints();
+            totalPoints += _q.getPoints();
         }
     }
 
@@ -20,9 +20,7 @@ class Test {
         String temp = "";
         for(int i = 0; i < questions.size(); ++i) {
             Question q = questions.get(i);
-            if(q != null) {
-                temp += String.format("%d. ", i + 1) + q + (withAns ? "\nCorrect Ans: " + q.getCorrectAns() + '\n' : "") +  "\n";
-            }
+            temp += String.format("%d. ", i + 1) + q + (withAns ? String.format("\nCorrect Ans: %s\n", q.getCorrectAns()) : "") +  "\n";
         }
         return temp;
     }
