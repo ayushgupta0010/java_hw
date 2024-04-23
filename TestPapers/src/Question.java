@@ -42,7 +42,7 @@ class Question {
     }
 
     public String toAnswerString(){
-        return "";
+        return this.toString() + "\nCorrect Answer: " + correctAns + '\n';
     }
 }
 
@@ -56,7 +56,7 @@ class ObjectiveQuestion extends Question {
     }
 
     public String toAnswerString() {
-        return this.toString() + "\nCorrect Answer: " + super.getCorrectAns() + '\n';
+        return super.toAnswerString();
     }
 }
 
@@ -70,7 +70,7 @@ class FillInTheBlankQuestion extends Question {
     }
 
     public String toAnswerString() {
-        return this.toString() + "\nCorrect Answer: " + super.getCorrectAns() + '\n';
+        return super.toAnswerString();
     }
 }
 
@@ -93,6 +93,6 @@ class MultipleChoiceQuestion extends Question {
     }
 
     public String toAnswerString() {
-        return this.toString() + "\nCorrect Answer: " + super.getCorrectAns() + '\n';
+        return super.toAnswerString();
     }
 }
