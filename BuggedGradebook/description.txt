@@ -1,0 +1,11 @@
+There were several missing semi-colons. A few wrong sytaxes like extra brackets, etc. There were a few access modifier errors where `private`
+modifier was used instead of `public` thus making the method inaccessible.
+
+One of the fields in the Person class was marked `final` and the value was changed later. Removing the `final` keyword from the `average` field
+fixed the error. There were a few logical errors like using `<=` instead of `<` when iterating the list thus throwing `ArrayIndexOutOfBoundsException`.
+
+Also, the `break` statement was missing from some cases causing a fall through situation. On line 58, the condition being checked for ranking students was wrong.
+Removing the `!` mark fixed it. One of the input was marked String but it was taking integer input. Switching it to `next()` fixed it.
+
+On line 49, before it was trying to access `getGrades()` on the ArrayList instead of Person. Accessing the person with `get()` and then calling 
+`getGrades()` fixed it.
