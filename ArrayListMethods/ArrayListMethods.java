@@ -1,6 +1,9 @@
 import java.util.*;
 
 class ArrayListMethods {
+
+    // Time complexity: O(n log n)
+
     public static <T extends Comparable<T>> boolean unique(List<T> list) {
         Collections.sort(list);
 
@@ -11,6 +14,8 @@ class ArrayListMethods {
 
         return true;
     }
+
+    // Time complexity: O(n)
 
     public static List<Integer> allMultiples(List<Integer> list, int num) {
         List<Integer> multiples = new ArrayList<Integer>();
@@ -23,6 +28,8 @@ class ArrayListMethods {
         return multiples;
     }
 
+    // Time complexity: O(n)
+
     public static List<String> allStringsofSize(List<String> list, int len) {
         List<String> strings = new ArrayList<String>();
 
@@ -33,6 +40,8 @@ class ArrayListMethods {
 
         return strings;
     }
+
+    // Time complexity: O(n log n)
 
     public static <T extends Comparable<T>> boolean isPermutation(List<T> list1, List<T> list2) {
         if (list1.size() != list2.size())
@@ -49,9 +58,10 @@ class ArrayListMethods {
         return true;
     }
 
+    // Time complexity: O(n)
+
     public static <T> List<String> tokenize(String sentence) {
         List<String> list = new ArrayList<String>();
-
         StringTokenizer st = new StringTokenizer(sentence);
 
         while (st.hasMoreTokens()) {
@@ -60,6 +70,8 @@ class ArrayListMethods {
 
         return list;
     }
+
+    // Time complexity: O(n)
 
     public static <T> List<T> removeAll(List<T> list, T item) {
         List<T> newList = new ArrayList<T>();
