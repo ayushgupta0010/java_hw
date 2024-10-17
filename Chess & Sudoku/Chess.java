@@ -18,14 +18,14 @@ public class Chess {
 
         boolean board[][] = new boolean[size][size];
 
-        solve(board, 0, nQueens);
+        solveNQueens(board, 0, nQueens);
 
-        printBoard(board, size);
+        printBoard(board);
 
         sc.close();
     }
 
-    public static boolean solve(boolean board[][], int col, int nQueens) {
+    public static boolean solveNQueens(boolean board[][], int col, int nQueens) {
         if (col >= nQueens)
             return true;
 
@@ -36,7 +36,7 @@ public class Chess {
                 board[i][col] = true;
 
                 // place rest of the queens
-                if (solve(board, col + 1, nQueens))
+                if (solveNQueens(board, col + 1, nQueens))
                     return true;
 
                 // backtrack if solution doesn't work
@@ -69,13 +69,16 @@ public class Chess {
         return true;
     }
 
-    public static void printBoard(boolean board[][], int size) {
+    public static void printBoard(boolean board[][]) {
+        int size = board.length;
+
         for (int i = 0; i < size; ++i) {
             System.out.print(size - i);
 
             for (int j = 0; j < size; ++j) {
                 System.out.print(board[i][j] ? " Q" : " .");
             }
+
             System.out.println();
         }
 
